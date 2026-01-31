@@ -1,0 +1,1982 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antouki Traiteur - Pâtisserie Fine à Casablanca</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FAF7F2;
+            --warm-brown: #8B6F47;
+            --deep-brown: #4A3425;
+            --gold: #D4AF37;
+            --soft-pink: #F4E8E3;
+            --accent-terracotta: #C47B5C;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cream);
+            color: var(--deep-brown);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Decorative Background Elements */
+        .bg-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bg-decoration::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .bg-decoration::after {
+            content: '';
+            position: absolute;
+            bottom: -15%;
+            left: -10%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(196, 123, 92, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(30px, -30px) rotate(5deg); }
+        }
+
+        /* Header */
+        header {
+            position: relative;
+            z-index: 10;
+            padding: 2rem 5%;
+            background: linear-gradient(to bottom, rgba(250, 247, 242, 0.98), rgba(250, 247, 242, 0.85));
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(139, 111, 71, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--deep-brown);
+            letter-spacing: 2px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(to right, var(--gold), transparent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--warm-brown);
+            text-decoration: none;
+            font-weight: 300;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--deep-brown);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent-terracotta);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-small {
+            padding: 0.6rem 1.5rem;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--warm-brown);
+            color: var(--cream);
+            text-decoration: none;
+        }
+
+        .btn-small:hover {
+            background: var(--deep-brown);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--warm-brown);
+            color: var(--warm-brown);
+        }
+
+        .btn-outline:hover {
+            background: var(--warm-brown);
+            color: var(--cream);
+        }
+
+        .user-menu {
+            position: relative;
+        }
+
+        .user-name {
+            cursor: pointer;
+            padding: 0.6rem 1rem;
+            border: 1px solid var(--warm-brown);
+            border-radius: 4px;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 0.5rem;
+            background: white;
+            border: 1px solid rgba(139, 111, 71, 0.2);
+            border-radius: 4px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            min-width: 180px;
+            display: none;
+        }
+
+        .dropdown.show {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.8rem 1.2rem;
+            color: var(--deep-brown);
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .dropdown a:hover {
+            background: var(--soft-pink);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            z-index: 5;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5.5rem;
+            font-weight: 300;
+            color: var(--deep-brown);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: 3px;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .hero h1 strong {
+            font-weight: 600;
+            color: var(--warm-brown);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--warm-brown);
+            margin-bottom: 1rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--warm-brown);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.8s backwards;
+        }
+
+        .btn {
+            padding: 1.2rem 3rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--warm-brown);
+            color: var(--cream);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--deep-brown);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn-primary:hover::before {
+            left: 0;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--warm-brown);
+            border: 2px solid var(--warm-brown);
+        }
+
+        .btn-secondary:hover {
+            background: var(--warm-brown);
+            color: var(--cream);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--cream);
+            padding: 3rem;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--warm-brown);
+            background: none;
+            border: none;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--deep-brown);
+        }
+
+        .modal h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--deep-brown);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--deep-brown);
+            font-weight: 400;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid rgba(139, 111, 71, 0.3);
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            background: white;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn-full {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--warm-brown);
+        }
+
+        .form-footer a {
+            color: var(--accent-terracotta);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* About Section */
+        .about {
+            position: relative;
+            z-index: 5;
+            padding: 6rem 5%;
+            background: var(--soft-pink);
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: var(--deep-brown);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .about-text p {
+            font-size: 1.05rem;
+            color: var(--warm-brown);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .about-image {
+            position: relative;
+            height: 500px;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(74, 52, 37, 0.15);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--gold) 0%, transparent 100%);
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        .about-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--warm-brown) 0%, var(--accent-terracotta) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.3);
+            font-weight: 300;
+        }
+
+        /* Specialties Section */
+        .specialties {
+            position: relative;
+            z-index: 5;
+            padding: 6rem 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 5rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.8rem;
+            font-weight: 400;
+            color: var(--deep-brown);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--warm-brown);
+            line-height: 1.8;
+        }
+
+        .specialties-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .specialty-card {
+            background: white;
+            border-radius: 2px;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(74, 52, 37, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .specialty-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--gold), var(--accent-terracotta));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .specialty-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(74, 52, 37, 0.15);
+        }
+
+        .specialty-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .specialty-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .specialty-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--deep-brown);
+            margin-bottom: 1rem;
+        }
+
+        .specialty-card p {
+            font-size: 0.95rem;
+            color: var(--warm-brown);
+            line-height: 1.7;
+        }
+
+        /* Menu Section with Ordering */
+        .menu {
+            position: relative;
+            z-index: 5;
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 5rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.8rem;
+            font-weight: 400;
+            color: var(--deep-brown);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--warm-brown);
+            line-height: 1.8;
+        }
+
+        .menu-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .menu-category {
+            margin-bottom: 5rem;
+        }
+
+        .category-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--deep-brown);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: var(--soft-pink);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .menu-item:hover {
+            transform: translateX(5px);
+            border-left-color: var(--gold);
+            box-shadow: 0 5px 20px rgba(74, 52, 37, 0.1);
+        }
+
+        .menu-item-image {
+            font-size: 3rem;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 3px 10px rgba(74, 52, 37, 0.08);
+        }
+
+        .menu-item-info {
+            flex: 1;
+        }
+
+        .menu-item-info h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--deep-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-info p {
+            font-size: 0.95rem;
+            color: var(--warm-brown);
+            line-height: 1.6;
+            margin-bottom: 0.8rem;
+        }
+
+        .price-order {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .price {
+            display: inline-block;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--accent-terracotta);
+        }
+
+        .add-to-cart-btn {
+            padding: 0.6rem 1.5rem;
+            background: var(--warm-brown);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart-btn:hover {
+            background: var(--deep-brown);
+            transform: translateY(-2px);
+        }
+
+                .contact {
+            position: relative;
+            z-index: 5;
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, var(--deep-brown) 0%, var(--warm-brown) 100%);
+            color: var(--cream);
+        }
+
+        .contact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: var(--cream);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .contact-item p {
+            font-size: 1.1rem;
+            color: rgba(250, 247, 242, 0.9);
+            line-height: 1.8;
+        }
+
+        .contact-item a {
+            color: var(--cream);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            border-bottom-color: var(--gold);
+        }
+
+        /* Cart Modal */
+        .cart-modal .modal-content {
+            max-width: 700px;
+        }
+
+        .cart-items {
+            margin: 2rem 0;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: var(--soft-pink);
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .cart-item-info h4 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--deep-brown);
+            margin-bottom: 0.3rem;
+        }
+
+        .cart-item-price {
+            color: var(--accent-terracotta);
+            font-weight: 500;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid var(--warm-brown);
+            background: white;
+            color: var(--warm-brown);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background: var(--warm-brown);
+            color: white;
+        }
+
+        .quantity-display {
+            min-width: 30px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .cart-total {
+            border-top: 2px solid var(--gold);
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--deep-brown);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 3rem;
+            color: var(--warm-brown);
+        }
+
+        /* Admin Dashboard */
+        .admin-page {
+            display: none;
+            position: relative;
+            z-index: 5;
+            padding: 4rem 5%;
+            min-height: 100vh;
+        }
+
+        .admin-page.active {
+            display: block;
+        }
+
+        .admin-header {
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--deep-brown);
+        }
+
+        .dashboard-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(74, 52, 37, 0.1);
+            border-left: 4px solid var(--gold);
+        }
+
+        .stat-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--warm-brown);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--deep-brown);
+        }
+
+        .orders-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(74, 52, 37, 0.1);
+        }
+
+        .orders-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: var(--deep-brown);
+            margin-bottom: 2rem;
+        }
+
+        .order-card {
+            border: 1px solid rgba(139, 111, 71, 0.2);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            background: var(--soft-pink);
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .order-id {
+            font-weight: 600;
+            color: var(--deep-brown);
+        }
+
+        .order-status {
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .status-pending {
+            background: #FFF3CD;
+            color: #856404;
+        }
+
+        .status-completed {
+            background: #D4EDDA;
+            color: #155724;
+        }
+
+        .status-cancelled {
+            background: #F8D7DA;
+            color: #721C24;
+        }
+
+        .order-details {
+            margin-top: 1rem;
+        }
+
+        .order-items {
+            margin: 1rem 0;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px dotted rgba(139, 111, 71, 0.2);
+        }
+
+        .order-total {
+            font-weight: 600;
+            color: var(--accent-terracotta);
+            margin-top: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Page Sections */
+        .page-section {
+            display: block;
+        }
+
+        .page-section.hidden {
+            display: none;
+        }
+
+                /* Footer */
+        footer {
+            position: relative;
+            z-index: 5;
+            padding: 2.5rem 5%;
+            background: var(--deep-brown);
+            text-align: center;
+            color: rgba(250, 247, 242, 0.6);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .btn {
+                padding: 1rem 2rem;
+                font-size: 0.8rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .menu-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .menu-item-image {
+                margin: 0 auto;
+            }
+
+            .price-order {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-decoration"></div>
+
+    <!-- Header with Auth -->
+    <header id="mainHeader">
+        <nav>
+            <div class="logo" onclick="showHome()">ANTOUKI</div>
+            <ul class="nav-links">
+                <li><a onclick="showHome()">Accueil</a></li>
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#specialites">Spécialités</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="user-actions">
+                <div class="cart-icon" onclick="openCart()">
+                    🛒
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                
+                <!-- Auth Buttons (shown when logged out) -->
+                <div class="auth-buttons" id="authButtons">
+                    <button class="btn-small" onclick="openLoginModal()">Connexion</button>
+                    <button class="btn-small btn-outline" onclick="openSignupModal()">S'inscrire</button>
+                </div>
+
+                <!-- User Menu (shown when logged in) -->
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <div class="user-name" onclick="toggleUserDropdown()">
+                        <span id="userName"></span> ▼
+                    </div>
+                    <div class="dropdown" id="userDropdown">
+                        <a onclick="viewOrders()">Mes Commandes</a>
+                        <a onclick="showAdminDashboard()" id="adminLink" style="display: none;">Dashboard Admin</a>
+                        <a onclick="logout()">Déconnexion</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div id="mainContent" class="page-section">
+        <!-- Hero Section -->
+        <section id="accueil" class="hero">
+            <div class="hero-content">
+                <div class="hero-subtitle">Pâtisserie Fine</div>
+                <h1>L'Art de la <strong>Gourmandise</strong></h1>
+                <p class="hero-description">
+                    Découvrez l'excellence de la pâtisserie française et marocaine au cœur de Casablanca, 
+                    où tradition et créativité se rencontrent dans chaque création.
+                </p>
+                <div class="hero-cta">
+                    <a href="#menu" class="btn btn-primary">Commander</a>
+                    <a href="#contact" class="btn btn-secondary">Nous Contacter</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Une Passion pour l'Excellence</h2>
+                    <p>
+                        Antouki Traiteur est une maison de pâtisserie raffinée située au Boulevard Abdelmoumen, 
+                        où chaque création est une célébration du savoir-faire artisanal et de la qualité exceptionnelle.
+                    </p>
+                    <p>
+                        Nos maîtres pâtissiers combinent les techniques classiques françaises avec les saveurs 
+                        authentiques du Maroc pour créer des desserts qui éveillent les sens et marquent les esprits.
+                    </p>
+                    <p>
+                        Que ce soit pour un événement spécial, une réception ou simplement pour le plaisir, 
+                        nous mettons tout notre cœur dans chaque gâteau, chaque pâtisserie, chaque gourmandise.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <div class="about-image-placeholder">
+                        <img src="images.png" alt="Image de la Pâtisserie" style="width:100%; height:100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="specialites" class="specialties">
+            <div class="section-header">
+                <h2>Nos Spécialités</h2>
+                <p>Des créations artisanales qui célèbrent la tradition et l'innovation</p>
+            </div>
+            <div class="specialties-grid">
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <img src="images3.png" alt="Gâteaux sur Mesure" style="width:250px; height:200px;">
+                    </div>
+                    <h3>Gâteaux sur Mesure</h3>
+                    <p>Des créations personnalisées pour tous vos événements : mariages, anniversaires, baptêmes. 
+                    Chaque gâteau est une œuvre d'art unique.</p>
+                </div>
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <img src="imagess.png" alt="Viennoiseries" style="width:250px; height:200px;">
+                    </div>
+                    <h3>Viennoiseries</h3>
+                    <p>Croissants dorés, pains au chocolat fondants et brioches moelleuses, 
+                    préparés quotidiennement selon les méthodes traditionnelles.</p>
+                </div>
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <img src="images4.png" alt="Pâtisseries Fines" style="width:250px; height:200px;">
+                    </div>
+                    <h3>Pâtisseries Fines</h3>
+                    <p>Éclairs, macarons, tartes et mille-feuilles élaborés avec des ingrédients nobles 
+                    et un souci du détail incomparable.</p>
+                </div>
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <img src="images6.png" alt="Pâtisserie Orientale" style="width:250px; height:200px;">
+                    </div>
+                    <h3>Pâtisserie Orientale</h3>
+                    <p>Des délices marocains authentiques : cornes de gazelle, chebakia, sellou, 
+                    préparés selon les recettes ancestrales.</p>
+                </div>
+                <div class="specialty-card">
+                    <div class="specialty-icon">🎉</div>
+                    <h3>Traiteur</h3>
+                    <p>Service traiteur complet pour vos réceptions et événements, 
+                    avec des buffets sucrés et salés raffinés.</p>
+                </div>
+                <div class="specialty-card">
+                    <div class="specialty-icon">🎁</div>
+                    <h3>Coffrets Cadeaux</h3>
+                    <p>Assortiments gourmands élégamment présentés, 
+                    parfaits pour offrir ou se faire plaisir.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="menu">
+            <div class="section-header">
+                <h2>Notre Menu</h2>
+                <p>Découvrez notre sélection de pâtisseries artisanales et créations gourmandes</p>
+            </div>
+            <div class="menu-content" id="menuContent">
+                <!-- Menu will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="contact-content">
+                <h2>Visitez-nous</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9;">
+                    Nous serions ravis de vous accueillir dans notre boutique
+                </p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>Adresse</h3>
+                        <p>Boulevard Abdelmoumen<br>Casablanca 20250<br>Maroc</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Horaires</h3>
+                        <p>Lundi - Samedi<br>9h00 - 20h00<br>Dimanche : 10h00 - 18h00</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Contact</h3>
+                        <p>
+                            <a href="tel:+212522000000">+212 522 991 305</a><br>
+                            <a href="mailto:contact@antoikitraiteur.ma">contact@antoikitraiteur.ma</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminPage" class="admin-page">
+        <div class="admin-header">
+            <h1>Dashboard Admin</h1>
+            <button class="btn-small" onclick="showHome()">Retour au Site</button>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="stat-card">
+                <h3>Commandes Aujourd'hui</h3>
+                <div class="stat-value" id="todayOrders">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Revenus du Jour</h3>
+                <div class="stat-value" id="todayRevenue">0 DH</div>
+            </div>
+            <div class="stat-card">
+                <h3>Total Commandes</h3>
+                <div class="stat-value" id="totalOrders">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Clients Inscrits</h3>
+                <div class="stat-value" id="totalUsers">0</div>
+            </div>
+        </div>
+
+        <div class="orders-section">
+            <h2>Commandes Récentes</h2>
+            <div id="adminOrdersList">
+                <!-- Orders will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('loginModal')">&times;</button>
+            <h2>Connexion</h2>
+            <form onsubmit="login(event)">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Mot de passe</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Se connecter</button>
+            </form>
+            <div class="form-footer">
+                Pas encore de compte? <a href="#" onclick="closeModal('loginModal'); openSignupModal();">S'inscrire</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('signupModal')">&times;</button>
+            <h2>Créer un compte</h2>
+            <form onsubmit="signup(event)">
+                <div class="form-group">
+                    <label>Nom complet</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Téléphone</label>
+                    <input type="tel" id="signupPhone" required>
+                </div>
+                <div class="form-group">
+                    <label>Adresse</label>
+                    <textarea id="signupAddress" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Mot de passe</label>
+                    <input type="password" id="signupPassword" required minlength="6">
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">S'inscrire</button>
+            </form>
+            <div class="form-footer">
+                Déjà un compte? <a href="#" onclick="closeModal('signupModal'); openLoginModal();">Se connecter</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal cart-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('cartModal')">&times;</button>
+            <h2>Mon Panier</h2>
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be populated by JavaScript -->
+            </div>
+            <div class="cart-total" id="cartTotalSection" style="display: none;">
+                <div class="cart-total-row">
+                    <span>Total:</span>
+                    <span id="cartTotal">0 DH</span>
+                </div>
+                <button class="btn btn-primary btn-full" onclick="checkout()">Commander</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('checkoutModal')">&times;</button>
+            <h2>Finaliser la commande</h2>
+            <form onsubmit="placeOrder(event)">
+                <div class="form-group">
+                    <label>Adresse de livraison</label>
+                    <textarea id="deliveryAddress" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Téléphone</label>
+                    <input type="tel" id="deliveryPhone" required>
+                </div>
+                <div class="form-group">
+                    <label>Notes spéciales (optionnel)</label>
+                    <textarea id="orderNotes"></textarea>
+                </div>
+                <div class="cart-total-row" style="margin: 1.5rem 0;">
+                    <span>Total à payer:</span>
+                    <span id="checkoutTotal">0 DH</span>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Confirmer la commande</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Orders Modal -->
+    <div id="ordersModal" class="modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <button class="modal-close" onclick="closeModal('ordersModal')">&times;</button>
+            <h2>Mes Commandes</h2>
+            <div id="userOrdersList">
+                <!-- Orders will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Antouki Traiteur. Tous droits réservés. Casablanca, Maroc.</p>
+    </footer>
+
+    <script>
+        // Menu Data
+        const menuData = {
+            francaise: [
+                { id: 1, name: "Gâteau Entremet", description: "Vanille avec fourrage framboise et chocolat blanc", price: "Sur commande", icon: "🍰", priceNum: 0 },
+                { id: 2, name: "Croissants", description: "Croissants au beurre dorés et feuilletés", price: "8 DH", icon: "🥐", priceNum: 8 },
+                { id: 3, name: "Pain au Chocolat", description: "Viennoiserie au chocolat fondant", price: "8 DH", icon: "🍫", priceNum: 8 },
+                { id: 4, name: "Tarte Framboise Pistache", description: "Tarte acidulée à la crème de pistache", price: "45 DH", icon: "🥧", priceNum: 45 },
+                { id: 5, name: "Mille-feuille", description: "Pâte feuilletée et crème pâtissière", price: "35 DH", icon: "🍮", priceNum: 35 },
+                { id: 6, name: "Cookies Américains", description: "Extra moelleux et fondants", price: "12 DH", icon: "🍪", priceNum: 12 }
+            ],
+            marocaine: [
+                { id: 7, name: "Cornes de Gazelle", description: "كعب غزال - Pâtisserie aux amandes traditionnelle", price: "180 DH/kg", icon: "🌙", priceNum: 180 },
+                { id: 8, name: "Fekkas Marocain", description: "الفقاص - Biscuits secs aux amandes", price: "160 DH/kg", icon: "🥜", priceNum: 160 },
+                { id: 9, name: "Chebakia", description: "شباكية - Pâtisserie au miel et sésame", price: "150 DH/kg", icon: "🍯", priceNum: 150 },
+                { id: 10, name: "Briouat", description: "بريوات - Triangles aux amandes", price: "170 DH/kg", icon: "🥨", priceNum: 170 },
+                { id: 11, name: "Ghoriba", description: "غريبة - Sablés fondants aux amandes", price: "165 DH/kg", icon: "🌰", priceNum: 165 },
+                { id: 12, name: "Sellou", description: "Pâte d'amandes grillées au miel", price: "200 DH/kg", icon: "🥠", priceNum: 200 }
+            ],
+            occasions: [
+                { id: 13, name: "Plateau Beldi Authentique", description: "Assortiment de pâtisseries marocaines 100% amandes", price: "À partir de 300 DH", icon: "🎁", priceNum: 300 },
+                { id: 14, name: "Gâteau sur Mesure", description: "Créations personnalisées pour vos événements", price: "Sur devis", icon: "🎂", priceNum: 0 },
+                { id: 15, name: "Service Traiteur", description: "Buffets sucrés et salés pour réceptions", price: "Sur devis", icon: "🍽️", priceNum: 0 },
+                { id: 16, name: "Plateau Mixte", description: "Pâtisseries françaises et marocaines", price: "À partir de 250 DH", icon: "🎉", priceNum: 250 },
+                { id: 17, name: "Gâteaux de Mariage", description: "Créations uniques pour votre grand jour", price: "Sur devis", icon: "💍", priceNum: 0 },
+                { id: 18, name: "Plateau Anniversaire", description: "Assortiment festif personnalisable", price: "À partir de 280 DH", icon: "🎈", priceNum: 280 }
+            ]
+        };
+
+        // Initialize
+        let currentUser = null;
+        let cart = [];
+
+        // Load from localStorage
+        function loadData() {
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                updateAuthUI();
+            }
+            const savedCart = localStorage.getItem('cart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCartCount();
+            }
+        }
+
+        // Save to localStorage
+        function saveData() {
+            if (currentUser) {
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        // Render Menu
+        function renderMenu() {
+            const menuContent = document.getElementById('menuContent');
+            let html = '';
+
+            const categories = [
+                { key: 'francaise', title: 'Pâtisserie Française' },
+                { key: 'marocaine', title: 'Pâtisserie Marocaine' },
+                { key: 'occasions', title: 'Plateaux & Occasions' }
+            ];
+
+            categories.forEach(category => {
+                html += `
+                    <div class="menu-category">
+                        <h3 class="category-title">${category.title}</h3>
+                        <div class="menu-grid">
+                `;
+
+                menuData[category.key].forEach(item => {
+                    html += `
+                        <div class="menu-item">
+                            <div class="menu-item-image">${item.icon}</div>
+                            <div class="menu-item-info">
+                                <h4>${item.name}</h4>
+                                <p>${item.description}</p>
+                                <div class="price-order">
+                                    <span class="price">${item.price}</span>
+                                    ${item.priceNum > 0 ? `<button class="add-to-cart-btn" onclick="addToCart(${item.id})">Ajouter</button>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+
+            menuContent.innerHTML = html;
+        }
+
+        // Auth Functions
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.add('show');
+        }
+
+        function openSignupModal() {
+            document.getElementById('signupModal').classList.add('show');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('show');
+        }
+
+        function login(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Get users from localStorage
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            
+            // Check for admin
+            if (email === 'admin@antouki.ma' && password === 'admin123') {
+                currentUser = { 
+                    name: 'Administrateur', 
+                    email: email, 
+                    isAdmin: true 
+                };
+                saveData();
+                updateAuthUI();
+                closeModal('loginModal');
+                alert('Bienvenue Administrateur!');
+                return;
+            }
+
+            // Check regular users
+            const user = users.find(u => u.email === email && u.password === password);
+            if (user) {
+                currentUser = user;
+                saveData();
+                updateAuthUI();
+                closeModal('loginModal');
+                alert('Connexion réussie!');
+            } else {
+                alert('Email ou mot de passe incorrect');
+            }
+        }
+
+        function signup(event) {
+            event.preventDefault();
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const phone = document.getElementById('signupPhone').value;
+            const address = document.getElementById('signupAddress').value;
+            const password = document.getElementById('signupPassword').value;
+
+            // Get existing users
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            
+            // Check if email already exists
+            if (users.find(u => u.email === email)) {
+                alert('Cet email est déjà utilisé');
+                return;
+            }
+
+            // Create new user
+            const newUser = {
+                id: Date.now(),
+                name,
+                email,
+                phone,
+                address,
+                password,
+                isAdmin: false,
+                createdAt: new Date().toISOString()
+            };
+
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+
+            // Auto login
+            currentUser = newUser;
+            saveData();
+            updateAuthUI();
+            closeModal('signupModal');
+            alert('Compte créé avec succès!');
+        }
+
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            cart = [];
+            localStorage.removeItem('cart');
+            updateAuthUI();
+            updateCartCount();
+            showHome();
+            alert('Déconnexion réussie');
+        }
+
+        function updateAuthUI() {
+            const authButtons = document.getElementById('authButtons');
+            const userMenu = document.getElementById('userMenu');
+            const userName = document.getElementById('userName');
+            const adminLink = document.getElementById('adminLink');
+
+            if (currentUser) {
+                authButtons.style.display = 'none';
+                userMenu.style.display = 'block';
+                userName.textContent = currentUser.name;
+                
+                if (currentUser.isAdmin) {
+                    adminLink.style.display = 'block';
+                }
+            } else {
+                authButtons.style.display = 'flex';
+                userMenu.style.display = 'none';
+                adminLink.style.display = 'none';
+            }
+        }
+
+        function toggleUserDropdown() {
+            document.getElementById('userDropdown').classList.toggle('show');
+        }
+
+        // Cart Functions
+        function addToCart(itemId) {
+            if (!currentUser) {
+                alert('Veuillez vous connecter pour commander');
+                openLoginModal();
+                return;
+            }
+
+            // Find item
+            let item = null;
+            for (let category in menuData) {
+                item = menuData[category].find(i => i.id === itemId);
+                if (item) break;
+            }
+
+            if (!item || item.priceNum === 0) return;
+
+            // Check if already in cart
+            const existingItem = cart.find(i => i.id === itemId);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({
+                    id: item.id,
+                    name: item.name,
+                    price: item.priceNum,
+                    quantity: 1,
+                    icon: item.icon
+                });
+            }
+
+            saveData();
+            updateCartCount();
+            alert('Article ajouté au panier!');
+        }
+
+        function updateCartCount() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = totalItems;
+        }
+
+        function openCart() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotalSection = document.getElementById('cartTotalSection');
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart">Votre panier est vide</div>';
+                cartTotalSection.style.display = 'none';
+            } else {
+                let html = '';
+                let total = 0;
+
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+
+                    html += `
+                        <div class="cart-item">
+                            <div class="cart-item-info">
+                                <h4>${item.icon} ${item.name}</h4>
+                                <div class="cart-item-price">${item.price} DH</div>
+                            </div>
+                            <div class="quantity-controls">
+                                <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                                <span class="quantity-display">${item.quantity}</span>
+                                <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                cartItems.innerHTML = html;
+                document.getElementById('cartTotal').textContent = total + ' DH';
+                cartTotalSection.style.display = 'block';
+            }
+
+            document.getElementById('cartModal').classList.add('show');
+        }
+
+        function updateQuantity(itemId, change) {
+            const item = cart.find(i => i.id === itemId);
+            if (!item) return;
+
+            item.quantity += change;
+
+            if (item.quantity <= 0) {
+                cart = cart.filter(i => i.id !== itemId);
+            }
+
+            saveData();
+            updateCartCount();
+            openCart(); // Refresh cart display
+        }
+
+        function checkout() {
+            if (!currentUser) {
+                alert('Veuillez vous connecter');
+                return;
+            }
+
+            // Pre-fill user data
+            document.getElementById('deliveryAddress').value = currentUser.address || '';
+            document.getElementById('deliveryPhone').value = currentUser.phone || '';
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('checkoutTotal').textContent = total + ' DH';
+
+            closeModal('cartModal');
+            document.getElementById('checkoutModal').classList.add('show');
+        }
+
+        function placeOrder(event) {
+            event.preventDefault();
+
+            const order = {
+                id: 'ORD-' + Date.now(),
+                userId: currentUser.id,
+                userName: currentUser.name,
+                userEmail: currentUser.email,
+                items: [...cart],
+                total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+                deliveryAddress: document.getElementById('deliveryAddress').value,
+                deliveryPhone: document.getElementById('deliveryPhone').value,
+                notes: document.getElementById('orderNotes').value,
+                status: 'pending',
+                createdAt: new Date().toISOString()
+            };
+
+            // Save order
+            const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+            orders.push(order);
+            localStorage.setItem('orders', JSON.stringify(orders));
+
+            // Clear cart
+            cart = [];
+            saveData();
+            updateCartCount();
+
+            closeModal('checkoutModal');
+            alert('Commande confirmée! Vous recevrez une confirmation par téléphone.');
+        }
+
+        // Orders
+        function viewOrders() {
+            if (!currentUser) return;
+
+            const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+            const userOrders = orders.filter(o => o.userId === currentUser.id);
+
+            const ordersList = document.getElementById('userOrdersList');
+
+            if (userOrders.length === 0) {
+                ordersList.innerHTML = '<div class="empty-cart">Aucune commande</div>';
+            } else {
+                let html = '';
+                userOrders.reverse().forEach(order => {
+                    html += `
+                        <div class="order-card">
+                            <div class="order-header">
+                                <span class="order-id">${order.id}</span>
+                                <span class="order-status status-${order.status}">
+                                    ${order.status === 'pending' ? 'En cours' : order.status === 'completed' ? 'Livrée' : 'Annulée'}
+                                </span>
+                            </div>
+                            <div class="order-details">
+                                <div><strong>Date:</strong> ${new Date(order.createdAt).toLocaleString('fr-FR')}</div>
+                                <div class="order-items">
+                                    ${order.items.map(item => `
+                                        <div class="order-item">
+                                            <span>${item.icon} ${item.name} x${item.quantity}</span>
+                                            <span>${item.price * item.quantity} DH</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                                <div class="order-total">Total: ${order.total} DH</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                ordersList.innerHTML = html;
+            }
+
+            document.getElementById('ordersModal').classList.add('show');
+        }
+
+        // Admin Functions
+        function showAdminDashboard() {
+            if (!currentUser || !currentUser.isAdmin) {
+                alert('Accès non autorisé');
+                return;
+            }
+
+            document.getElementById('mainContent').classList.add('hidden');
+            document.getElementById('adminPage').classList.add('active');
+
+            updateAdminStats();
+            loadAdminOrders();
+        }
+
+        function showHome() {
+            document.getElementById('mainContent').classList.remove('hidden');
+            document.getElementById('adminPage').classList.remove('active');
+        }
+
+        function updateAdminStats() {
+            const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+
+            const today = new Date().toDateString();
+            const todayOrders = orders.filter(o => new Date(o.createdAt).toDateString() === today);
+            const todayRevenue = todayOrders.reduce((sum, o) => sum + o.total, 0);
+
+            document.getElementById('todayOrders').textContent = todayOrders.length;
+            document.getElementById('todayRevenue').textContent = todayRevenue + ' DH';
+            document.getElementById('totalOrders').textContent = orders.length;
+            document.getElementById('totalUsers').textContent = users.length;
+        }
+
+        function loadAdminOrders() {
+            const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+            const ordersList = document.getElementById('adminOrdersList');
+
+            if (orders.length === 0) {
+                ordersList.innerHTML = '<div class="empty-cart">Aucune commande</div>';
+            } else {
+                let html = '';
+                orders.reverse().forEach(order => {
+                    html += `
+                        <div class="order-card">
+                            <div class="order-header">
+                                <span class="order-id">${order.id}</span>
+                                <span class="order-status status-${order.status}">
+                                    ${order.status === 'pending' ? 'En cours' : order.status === 'completed' ? 'Livrée' : 'Annulée'}
+                                </span>
+                            </div>
+                            <div class="order-details">
+                                <div><strong>Client:</strong> ${order.userName} (${order.userEmail})</div>
+                                <div><strong>Téléphone:</strong> ${order.deliveryPhone}</div>
+                                <div><strong>Adresse:</strong> ${order.deliveryAddress}</div>
+                                <div><strong>Date:</strong> ${new Date(order.createdAt).toLocaleString('fr-FR')}</div>
+                                ${order.notes ? `<div><strong>Notes:</strong> ${order.notes}</div>` : ''}
+                                <div class="order-items">
+                                    ${order.items.map(item => `
+                                        <div class="order-item">
+                                            <span>${item.icon} ${item.name} x${item.quantity}</span>
+                                            <span>${item.price * item.quantity} DH</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                                <div class="order-total">Total: ${order.total} DH</div>
+                                <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                                    <button class="btn-small" onclick="updateOrderStatus('${order.id}', 'completed')">Marquer comme livrée</button>
+                                    <button class="btn-small btn-outline" onclick="updateOrderStatus('${order.id}', 'cancelled')">Annuler</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                ordersList.innerHTML = html;
+            }
+        }
+
+        function updateOrderStatus(orderId, status) {
+            const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+            const order = orders.find(o => o.id === orderId);
+            if (order) {
+                order.status = status;
+                localStorage.setItem('orders', JSON.stringify(orders));
+                loadAdminOrders();
+                updateAdminStats();
+            }
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.user-menu')) {
+                document.getElementById('userDropdown').classList.remove('show');
+            }
+        });
+
+        // Initialize on load
+        window.addEventListener('load', function() {
+            loadData();
+            renderMenu();
+        });
+    </script>
+</body>
+</html>
